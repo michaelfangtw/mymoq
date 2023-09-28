@@ -36,8 +36,11 @@ public class UnitTest1
         var mockUser = new User() { UserID = 888, UserName = "mike888" };
         var userBLL = new Mock<UserBLL>();
         //傳888才有值
-        userBLL.Setup<User>(u => u.GetUserByID(It.IsAny<long>())).Returns(mockUser);
-        var user = userBLL.Object.GetUserByID(userID);
+        userBLL.Setup<User>(u => u.GetUserByID(888)).Returns(mockUser);
+        var user = userBLL.Object.GetUserByID(888);
+        //任何userID都是一樣
+        //userBLL.Setup<User>(u => u.GetUserByID(It.IsAny<long>())).Returns(mockUser);
+        //var user = userBLL.Object.GetUserByID(666);
         return user;
     }
     [TestMethod]
